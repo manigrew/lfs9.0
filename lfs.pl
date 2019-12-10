@@ -23,8 +23,15 @@ close FH;
 my $sect;
 my $start = 0;
 my $end = 0;
-while($book =~ m!<h2 class="title">\s*<a.*?></a>5.[\d.]+&nbsp;(.*?)</h2>!mgs) {
-	my $pkg .= $1;
+
+my $instr =<<EOT;
+#! /bin/bash -x
+
+source funcs.sh
+
+EOT
+while($book =~ m!<h2 class="title">\s*<a.*?></a>([\d.]+)&nbsp;(.*?)</h2>!mgs) {
+	my ($section, $pkg) = ($1, $2);
 
 	#print "PKG: $pkg\n";
 	$pkg = clean_pkg($pkg);
@@ -36,9 +43,9 @@ while($book =~ m!<h2 class="title">\s*<a.*?></a>5.[\d.]+&nbsp;(.*?)</h2>!mgs) {
 	next unless ($start);
 	next if ($end);
 
-	my $instr = get_instr($pkg);
-	print $instr . "\n";
+	$instr .= get_instr($section, $pkg);
 }
+print $instr . "\n";
 
 sub clean_pkg {
 	my($pkg) = @_;
@@ -54,7 +61,7 @@ sub clean_pkg {
 }
 
 sub get_instr {
-	my ($topic) = @_;
+	my ($section, $topic) = @_;
 
 	my $file = '';
        	if($topic =~ /^(.*)-/) {
@@ -67,12 +74,27 @@ sub get_instr {
 	close FH;
 
 	$topic =~ s/tcl-/tcl/;
-	my $script = "untar($topic)\n";;
+
+	my $script =<<EOT;
+#============================
+start $section $topic
+#----------------------------
+untar $topic
+#--------
+COMMANDS
+#--------
+cleanup $topic
+
+EOT
+
+	my $cmd;
 	while($book =~ m!<kbd.*?>(.*?)</kbd>!mgs) {
-		my $instr = $1;
-		$script .= $instr . "\n";
+		$cmd .= "$1\n";
 	}
-	$script .= "cleanup($topic)\n";
+	chomp $cmd;
+
+	$script =~ s/COMMANDS/$cmd/;
+
 	return $script;
 
 }
