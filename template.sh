@@ -4,32 +4,48 @@ SRCDIR=$LFS/sources
 cleanup () {
 	pkg=$1
 	cd $SRCDIR
-	[[ -d $pkg ]] && echo rm -rvf $pkg
+	if [[ -d $pkg ]]; then
+		rm -rvf $pkg
+	fi
 }
 untar () {
 	pkg=$1
 
+	echo ==== $pkg ====
 	cleanup $pkg
 
 	cd $SRCDIR
+	tarflag=
 	for file in $(ls $pkg*.tar.*); do
 		echo $file
-	if test -e $pkg*.tar.xz; then
-		echo tar xJvf $pkg*.tar.xz
-	elif test -e $pkg*.tar.bz2; then
-		echo tar xjvf $pkg*.tar.bz2
-	elif test -e $pkg*.tar.gz ; then
-		echo tar xzvf $pkg*.tar.gz
-	else 
-		echo "Could not find package"
-		return 1
-	fi
+		if [[ $file = *.xz ]]; then
+			tarflag=J
+		elif [[ $file = *.bz2 ]]; then
+			tarflag=j
+		elif [[ $file = *.gz ]]; then
+			tarflag=z
+		else 
+			echo "Could not find package"
+			return 1
+		fi
+		tar x${tarflag}vf $file
 	done
 
 }
 
 
-untar make-4.2.1
-untar tcl8.6.9
+testit () {
+	untar make-4.2.1
+	untar tcl8.6.9
+	untar elfutils-0.177
+	untar mpfr-4.0.2
+
+	cleanup make-4.2.1
+	cleanup tcl8.6.9
+	cleanup elfutils-0.177
+	cleanup mpfr-4.0.2
+}
+
+testit
 
 
