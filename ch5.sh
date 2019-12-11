@@ -24,7 +24,7 @@ start 5.12. expect-5.45.4
 untar expect-5.45.4
 #--------
 cp -v configure{,.orig}
-sed 's:/usr/local/bin:/bin:' configure.orig &gt; configure
+sed 's:/usr/local/bin:/bin:' configure.orig > configure
 ./configure --prefix=/tools       \
             --with-tcl=/tools/lib \
             --with-tclinclude=/tools/include
@@ -51,7 +51,7 @@ start 5.14. m4-1.4.18
 untar m4-1.4.18
 #--------
 sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' lib/*.c
-echo "#define _IO_IN_BACKUP 0x100" &gt;&gt; lib/stdio-impl.h
+echo "#define _IO_IN_BACKUP 0x100" >> lib/stdio-impl.h
 ./configure --prefix=/tools
 make
 make check
@@ -154,8 +154,8 @@ start 5.22. findutils-4.6.0
 untar findutils-4.6.0
 #--------
 sed -i 's/IO_ftrylockfile/IO_EOF_SEEN/' gl/lib/*.c
-sed -i '/unistd/a #include &lt;sys/sysmacros.h&gt;' gl/lib/mountlist.c
-echo "#define _IO_IN_BACKUP 0x100" &gt;&gt; gl/lib/stdio-impl.h
+sed -i '/unistd/a #include <sys/sysmacros.h>' gl/lib/mountlist.c
+echo "#define _IO_IN_BACKUP 0x100" >> gl/lib/stdio-impl.h
 ./configure --prefix=/tools
 make
 make check

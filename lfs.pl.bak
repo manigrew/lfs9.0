@@ -3,7 +3,7 @@
 use strict;
 
 my $DEBUG = 1;
-my $PATH = "9.0"; # chunks .gz file untarred in pwd
+my $PATH = "9.0/chapter05"; # chunks .gz file untarred in pwd
 
 # Read no chunks html
 open(FH, 'lfs.html') or die "Could not open book: $!";
@@ -63,17 +63,12 @@ sub clean_pkg {
 sub get_instr {
 	my ($section, $topic) = @_;
 
-	my $chapter = substr($section, 0, 1);
 	my $file = '';
        	if($topic =~ /^(.*)-/) {
 		$file = $1
 	}
-	$file = "$PATH/chapter0$chapter/$file.html";
+	$file = "$PATH/$file.html";
 
-	if(! -e $file) {
-		print STDERR "$section, $topic, $file\n";
-		return;
-	}
 	open(FH, $file) or die "Could not open $file: $!";
 	my $book = do {local $/; <FH>};
 	close FH;
@@ -97,11 +92,6 @@ EOT
 		$cmd .= "$1\n";
 	}
 	chomp $cmd;
-	$cmd =~ s/&lt;/</g;
-	$cmd =~ s/&gt;/>/g;
-	$cmd =~ s/&amp;/&/g;
-	$cmd =~ s!<code class="literal">!!g;
-	$cmd =~ s!</code>!!g;
 
 	$script =~ s/COMMANDS/$cmd/;
 

@@ -5,7 +5,8 @@ cleanup () {
 	pkg=$1
 	cd $SRCDIR
 	if [[ -d $pkg ]]; then
-		rm -rvf $pkg
+		rm -rf $pkg
+		echo Removed $pkg
 	fi
 }
 untar () {
@@ -28,9 +29,10 @@ untar () {
 			echo "Could not find package"
 			return 1
 		fi
-		tar x${tarflag}vf $file
 	done
-
+	tar x${tarflag}f $file
+	cd $pkg
+	pwd
 }
 
 
