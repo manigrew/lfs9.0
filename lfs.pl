@@ -82,7 +82,7 @@ sub get_instr {
 
 	my $script =<<EOT;
 #============================
-start $section $topic
+startup $section $topic
 #----------------------------
 untar $topic
 #--------
