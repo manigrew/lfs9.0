@@ -3,7 +3,7 @@
 source funcs.sh
 
 #============================
-start 5.11. tcl8.6.9
+startup 5.11. tcl8.6.9
 #----------------------------
 untar tcl8.6.9
 #--------
@@ -19,7 +19,7 @@ ln -sv tclsh8.6 /tools/bin/tclsh
 cleanup tcl8.6.9
 
 #============================
-start 5.12. expect-5.45.4
+startup 5.12. expect-5.45.4
 #----------------------------
 untar expect-5.45.4
 #--------
@@ -35,7 +35,7 @@ make SCRIPTS="" install
 cleanup expect-5.45.4
 
 #============================
-start 5.13. dejagnu-1.6.2
+startup 5.13. dejagnu-1.6.2
 #----------------------------
 untar dejagnu-1.6.2
 #--------
@@ -46,7 +46,7 @@ make check
 cleanup dejagnu-1.6.2
 
 #============================
-start 5.14. m4-1.4.18
+startup 5.14. m4-1.4.18
 #----------------------------
 untar m4-1.4.18
 #--------
@@ -60,7 +60,7 @@ make install
 cleanup m4-1.4.18
 
 #============================
-start 5.15. ncurses-6.1
+startup 5.15. ncurses-6.1
 #----------------------------
 untar ncurses-6.1
 #--------
@@ -78,7 +78,7 @@ ln -s libncursesw.so /tools/lib/libncurses.so
 cleanup ncurses-6.1
 
 #============================
-start 5.16. bash-5.0
+startup 5.16. bash-5.0
 #----------------------------
 untar bash-5.0
 #--------
@@ -91,7 +91,7 @@ ln -sv bash /tools/bin/sh
 cleanup bash-5.0
 
 #============================
-start 5.17. bison-3.4.1
+startup 5.17. bison-3.4.1
 #----------------------------
 untar bison-3.4.1
 #--------
@@ -103,7 +103,7 @@ make install
 cleanup bison-3.4.1
 
 #============================
-start 5.18. bzip2-1.0.8
+startup 5.18. bzip2-1.0.8
 #----------------------------
 untar bzip2-1.0.8
 #--------
@@ -113,7 +113,7 @@ make PREFIX=/tools install
 cleanup bzip2-1.0.8
 
 #============================
-start 5.19. coreutils-8.31
+startup 5.19. coreutils-8.31
 #----------------------------
 untar coreutils-8.31
 #--------
@@ -125,7 +125,7 @@ make install
 cleanup coreutils-8.31
 
 #============================
-start 5.20. diffutils-3.7
+startup 5.20. diffutils-3.7
 #----------------------------
 untar diffutils-3.7
 #--------
@@ -137,7 +137,7 @@ make install
 cleanup diffutils-3.7
 
 #============================
-start 5.21. file-5.37
+startup 5.21. file-5.37
 #----------------------------
 untar file-5.37
 #--------
@@ -149,7 +149,7 @@ make install
 cleanup file-5.37
 
 #============================
-start 5.22. findutils-4.6.0
+startup 5.22. findutils-4.6.0
 #----------------------------
 untar findutils-4.6.0
 #--------
@@ -164,7 +164,7 @@ make install
 cleanup findutils-4.6.0
 
 #============================
-start 5.23. gawk-5.0.1
+startup 5.23. gawk-5.0.1
 #----------------------------
 untar gawk-5.0.1
 #--------
@@ -176,7 +176,7 @@ make install
 cleanup gawk-5.0.1
 
 #============================
-start 5.24. gettext-0.20.1
+startup 5.24. gettext-0.20.1
 #----------------------------
 untar gettext-0.20.1
 #--------
@@ -187,7 +187,7 @@ cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /tools/bin
 cleanup gettext-0.20.1
 
 #============================
-start 5.25. grep-3.3
+startup 5.25. grep-3.3
 #----------------------------
 untar grep-3.3
 #--------
@@ -199,7 +199,7 @@ make install
 cleanup grep-3.3
 
 #============================
-start 5.26. gzip-1.10
+startup 5.26. gzip-1.10
 #----------------------------
 untar gzip-1.10
 #--------
@@ -211,7 +211,7 @@ make install
 cleanup gzip-1.10
 
 #============================
-start 5.27. make-4.2.1
+startup 5.27. make-4.2.1
 #----------------------------
 untar make-4.2.1
 #--------
@@ -224,7 +224,7 @@ make install
 cleanup make-4.2.1
 
 #============================
-start 5.28. patch-2.7.6
+startup 5.28. patch-2.7.6
 #----------------------------
 untar patch-2.7.6
 #--------
@@ -236,7 +236,7 @@ make install
 cleanup patch-2.7.6
 
 #============================
-start 5.29. perl-5.30.0
+startup 5.29. perl-5.30.0
 #----------------------------
 untar perl-5.30.0
 #--------
@@ -249,7 +249,7 @@ cp -Rv lib/* /tools/lib/perl5/5.30.0
 cleanup perl-5.30.0
 
 #============================
-start 5.30. Python-3.7.4
+startup 5.30. Python-3.7.4
 #----------------------------
 untar Python-3.7.4
 #--------
@@ -261,7 +261,7 @@ make install
 cleanup Python-3.7.4
 
 #============================
-start 5.31. sed-4.7
+startup 5.31. sed-4.7
 #----------------------------
 untar sed-4.7
 #--------
@@ -273,7 +273,7 @@ make install
 cleanup sed-4.7
 
 #============================
-start 5.32. tar-1.32
+startup 5.32. tar-1.32
 #----------------------------
 untar tar-1.32
 #--------
@@ -285,7 +285,7 @@ make install
 cleanup tar-1.32
 
 #============================
-start 5.33. texinfo-6.6
+startup 5.33. texinfo-6.6
 #----------------------------
 untar texinfo-6.6
 #--------
@@ -297,7 +297,7 @@ make install
 cleanup texinfo-6.6
 
 #============================
-start 5.34. xz-5.2.4
+startup 5.34. xz-5.2.4
 #----------------------------
 untar xz-5.2.4
 #--------
