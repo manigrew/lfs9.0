@@ -46,6 +46,15 @@ testit () {
 	cleanup mpfr-4.0.2
 }
 
-testit
+startup () {
+	section=$1
+	pkg=$2
 
-
+	echo
+	echo
+	echo ===============================
+	echo ======== $section $pkg ========
+	echo ===============================
+	echo
+}
+#testit
