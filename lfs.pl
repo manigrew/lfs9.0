@@ -103,6 +103,8 @@ EOT
 	$cmd =~ s!<code class="literal">!!g;
 	$cmd =~ s!</code>!!g;
 
+	$cmd =~ s!^(\./configure --)!chmod u+x ./configure\n$1!m if($topic =~ /xpect/);
+
 	$script =~ s/COMMANDS/$cmd/;
 
 	return $script;

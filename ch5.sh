@@ -25,6 +25,7 @@ untar expect-5.45.4
 #--------
 cp -v configure{,.orig}
 sed 's:/usr/local/bin:/bin:' configure.orig > configure
+chmod u+x ./configure
 ./configure --prefix=/tools       \
             --with-tcl=/tools/lib \
             --with-tclinclude=/tools/include
