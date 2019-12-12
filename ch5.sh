@@ -19,9 +19,9 @@ ln -sv tclsh8.6 /tools/bin/tclsh
 cleanup tcl8.6.9
 
 #============================
-startup 5.12. expect-5.45.4
+startup 5.12. expect5.45.4
 #----------------------------
-untar expect-5.45.4
+untar expect5.45.4
 #--------
 cp -v configure{,.orig}
 sed 's:/usr/local/bin:/bin:' configure.orig > configure
@@ -33,7 +33,7 @@ make
 make test
 make SCRIPTS="" install
 #--------
-cleanup expect-5.45.4
+cleanup expect5.45.4
 
 #============================
 startup 5.13. dejagnu-1.6.2
