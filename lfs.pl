@@ -79,6 +79,7 @@ sub get_instr {
 	close FH;
 
 	$topic =~ s/tcl-/tcl/;
+	$topic =~ s/expect-/expect/;
 
 	my $script =<<EOT;
 #============================
